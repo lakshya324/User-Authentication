@@ -55,7 +55,7 @@ export async function verifyOtp(
       createError(`Validation Error! ${errors.array()[0].msg}`, 422);
 
     const { email, otp } = req.body;
-    const user = await UserDB.findById(email);
+    const user = await UserDB.findOne({ email });
     if (!user) createError("User not found", 404);
 
     await verifyOtpAndMarkVerified(user, otp);
