@@ -1,5 +1,6 @@
 import { defaultEmail } from "../template/default";
 import { user } from "../../models/user";
+import { otpExpireTime } from "../../config/env.config";
 
 /**
  * Sends an OTP email to the user.
@@ -11,7 +12,9 @@ export async function sendOtpMail(user: user, otp: string): Promise<void> {
   const body = `
     <p>Dear ${user.name || "User"},</p>
     <p>Your OTP for verification is: <strong>${otp}</strong></p>
-    <p>This OTP is valid for a limited time. Please do not share it with anyone.</p>
+    <p>This OTP is valid for ${Math.ceil(
+      otpExpireTime / 60
+    )} minutes. Please do not share it with anyone.</p>
     <p>Thank you,</p>
     <p>The User Authentication Team</p>
   `;

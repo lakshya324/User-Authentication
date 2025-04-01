@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // Server Config
-export const port = process.env.PORT || 5000;
+export const port = process.env.PORT || 4000;
 export const mongoDbUri = process.env.MONGODB_URI!;
 export const nodeEnv = process.env.NODE_ENV || "development";
 
