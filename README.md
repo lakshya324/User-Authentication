@@ -16,6 +16,7 @@ This repository contains a **User Authentication System** built with **Node.js**
 - **MongoDB Integration**: Persistent storage for user data.
 - **Error Handling**: Centralized error handling for API responses.
 - **Environment Configuration**: Configurable via `.env` file.
+- **Unit Testing**: Easily testable modules with a testing setup.
 
 ---
 
@@ -65,7 +66,7 @@ src/
     EMAIL=<your_email>
     PASSWORD=<your_email_password>
     ```
-    Refer to the `.env` file in the repository for all required variables.
+    Refer to the `.env.example` file in the repository for all required variables.
 
 4. Build the project:
     ```bash
@@ -84,6 +85,16 @@ src/
 
 ---
 
+## Running Tests
+
+To run tests, ensure you have the necessary test setup and dependencies installed. Then, execute the following command:
+
+```bash
+npm test
+```
+
+---
+
 ## API Endpoints
 
 ### Authentication Routes
@@ -98,8 +109,8 @@ src/
 - **DELETE** `/user/` - Delete user account.
 
 ### Admin Routes
-- **GET** `/admin/all` - Fetch all users (admin only).
-- **GET** `/admin/:id` - Fetch user by ID (admin only).
+- **GET** `/admin/users` - Fetch all users (admin only).
+- **GET** `/admin/user/:id` - Fetch user by ID (admin only).
 - **POST** `/admin/user` - Create a new user (admin only).
 - **PUT** `/admin/user/:id` - Update user details (admin only).
 - **DELETE** `/admin/user/:id` - Delete user (admin only).
@@ -137,4 +148,4 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 **Lakshya Sharma**  
 [GitHub Profile](https://github.com/lakshya324)
 
-For any queries, feel free to reach out via the [issues page](https://github.com/lakshya324/User-Authentication/issues).  
+For any queries, feel free to reach out via the [issues page](https://github.com/lakshya324/User-Authentication/issues).
