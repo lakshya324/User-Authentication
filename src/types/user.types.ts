@@ -4,8 +4,8 @@ export interface Iuser {
     name?: string;
     email: string;
     phone?: string;
-    password?: string;
+    password: string;
     role: UserRole;
-    isVerified: boolean;
+    isVerified?: boolean;
     lastLogin?: Date;
 }
