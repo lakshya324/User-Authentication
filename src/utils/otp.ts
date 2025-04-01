@@ -25,26 +25,23 @@ export function createOtp(): string {
  *         there is an issue during the OTP creation, saving, or sending process.
  */
 export async function createSaveAndSendOtp(user: user): Promise<void> {
-  try {
-    const key = `otp:${user.id}`;
-    if (await redisClient.get(key))
-      createError("An OTP already exists for this user", 400);
-    const otp = createOtp();
-    await redisClient.setEx(key, otpExpireTime, otp);
-    await sendOtpMail(user, otp);
-  } catch (error) {
-    createError("Error creating, saving, or sending OTP", 500);
-  }
+  if (user.isVerified) createError("User already verified", 400);
+  const key = `otp:${user.id}`;
+  if (await redisClient.get(key))
+    createError("An OTP already exists for this user", 400);
+  const otp = createOtp();
+  await redisClient.setEx(key, otpExpireTime, otp);
+  await sendOtpMail(user, otp);
 }
 
 /**
  * Verifies the provided OTP for a user and marks the user as verified if the OTP is valid.
- * 
+ *
  * This function retrieves the stored OTP for the user from the Redis cache and compares it
  * with the provided OTP. If the OTP matches, it deletes the OTP from the cache, updates the
  * user's verification status, saves the user, and sends a verification email. If the OTP is
  * invalid, it throws an error. Any unexpected errors during the process are caught and handled.
- * 
+ *
  * @param user - The user object for whom the OTP verification is being performed.
  * @param otp - The OTP string provided by the user for verification.
  * @returns A promise that resolves when the OTP is successfully verified and the user is marked as verified.
@@ -54,20 +51,16 @@ export async function verifyOtpAndMarkVerified(
   user: user,
   otp: string
 ): Promise<void> {
-  try {
-    const key = `otp:${user.id}`;
-    const storedOtp = await redisClient.get(key);
-    if (storedOtp && storedOtp === otp) {
-      await redisClient.del(key);
+  const key = `otp:${user.id}`;
+  const storedOtp = await redisClient.get(key);
+  if (storedOtp && storedOtp === otp) {
+    await redisClient.del(key);
 
-      user.isVerified = true;
-      await user.save();
+    user.isVerified = true;
+    await user.save();
 
-      await sendVerificationMail(user);
-      return;
-    }
-    createError("Invalid OTP", 401);
-  } catch (error) {
-    createError("Error verifying OTP", 500);
+    await sendVerificationMail(user);
+    return;
   }
+  createError("Invalid OTP", 401);
 }

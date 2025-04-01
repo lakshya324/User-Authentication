@@ -1,6 +1,6 @@
 import { isValidObjectId } from "mongoose";
 import { user, UserDB } from "../models/user";
-import { isEmailExist } from "./email";
+import { isEmailExist } from "./user.validate";
 import { encodePassword } from "./encrypt";
 import { createError } from "./error";
 

@@ -40,10 +40,9 @@ export async function updateUser(
 
     const user = req.user!;
 
-    const { name, email, phone } = req.body;
+    const { name, phone } = req.body;
     const updatedUser = await UpdateExistingUser(user.id, {
       name,
-      email,
       phone,
     } as user);
 
