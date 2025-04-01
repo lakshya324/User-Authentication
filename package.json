@@ -1,0 +1,54 @@
+{
+  "name": "user_authentication",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/lakshya324/User-Authentication#readme",
+  "bugs": {
+    "url": "https://github.com/lakshya324/User-Authentication/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lakshya324/User-Authentication.git"
+  },
+  "license": "MIT",
+  "author": "Lakshya Sharma",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc -p .",
+    "dev": "tsc-watch --onSuccess \"npm start\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "compression": "^1.7.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-sslify": "^1.2.0",
+    "express-validator": "^7.2.1",
+    "fs": "^0.0.1-security",
+    "helmet": "^8.0.0",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.6",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/body-parser": "^1.19.5",
+    "@types/compression": "^1.7.5",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/express-sslify": "^1.2.5",
+    "@types/hpp": "^0.2.6",
+    "@types/jsonwebtoken": "^9.0.8",
+    "@types/morgan": "^1.9.9",
+    "tsc-watch": "^6.2.1"
+  }
+}
