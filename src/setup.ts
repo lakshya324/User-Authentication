@@ -1,6 +1,6 @@
 import fs from "fs";
 import { nodeEnv } from "./config/env.config";
-import { notifyServerRestart } from "./emails/mail/server.notify.email";
+import { notifyServerRestart } from "./emails/mail/server.notify.mail";
 
 const setupEnvironment = () => {
   // Notify server restart in production
