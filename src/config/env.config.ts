@@ -16,12 +16,6 @@ export const saltRounds = +process.env.SALT_ROUNDS!;
 export const ipExpireTime = +process.env.IP_EXPIRE_TIME!; // in mins
 export const ipRateLimit = +process.env.IP_RATE_LIMIT!;
 
-// OpenAI Config
-export const openAiApiKey = process.env.OPENAI_API_KEY!;
-export const openAiMessageLimit = +process.env.OPENAI_MESSAGE_FETCH_LIMIT!;
-export const openAiAssistantId = process.env.OPENAI_ASSISTANT_ID!;
-export type openAiRoles = "user" | "assistant";
-
 // Redis Config
 export const redisConfig = {
   username: process.env.REDIS_USERNAME!,
@@ -32,15 +26,28 @@ export const redisConfig = {
 
 // Email Config
 export const transporter = {
-    service: process.env.EMAIL_SERVICE!,
-    auth: {
-      user: process.env.EMAIL!,
-      pass: process.env.PASSWORD!,
-    },
-  };
+  service: process.env.EMAIL_SERVICE!,
+  auth: {
+    user: process.env.EMAIL!,
+    pass: process.env.PASSWORD!,
+  },
+};
 export const emails = {
-    organization: process.env.ORGANIZATION_EMAIL!,
-    server_notify: process.env.SERVER_NOTIFY_EMAIL!.split(","),
-    // support: process.env.SUPPORT_EMAIL!,
-    // noReply: process.env.NO_REPLY_EMAIL!,
-  };
+  organization: process.env.ORGANIZATION_EMAIL!,
+  server_notify: process.env.SERVER_NOTIFY_EMAIL!.split(","),
+  // support: process.env.SUPPORT_EMAIL!,
+  // noReply: process.env.NO_REPLY_EMAIL!,
+};
+
+// User Config
+export enum UserRole {
+  User = "user",
+  Admin = "admin",
+}
+
+// OTP Config
+export const otpExpireTime = +process.env.OTP_EXPIRE_TIME! * 60; // in mins [convert to seconds]
+export const otpLength = +process.env.OTP_LENGTH!; // in mins
+
+// Pagination Config
+export const pageLimit = process.env.PAGE_LIMIT ? +process.env.PAGE_LIMIT : 10;
