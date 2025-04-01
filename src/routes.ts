@@ -2,7 +2,9 @@ import express, { Router, Request, Response, NextFunction } from "express";
 import { AuthRequest, ResponsePayload, StatusError } from "./types/types";
 import authRoutes from "./routes/auth";
 import userRoutes from "./routes/user";
+import adminRoutes from "./routes/admin";
 import { createError } from "./utils/error";
+import { authMiddleware } from "./middlewares/auth";
 
 const router: Router = express.Router();
 
@@ -18,7 +20,10 @@ router.use((req: AuthRequest, res: Response, next: NextFunction) => {
 router.use("/auth", authRoutes);
 
 //* User Routes
-router.use("/user", userRoutes);
+router.use("/user",authMiddleware(), userRoutes);
+
+//* Admin Routes
+router.use("/admin", authMiddleware(true), adminRoutes);
 
 //! 404 Middleware
 router.use((req: Request, res: Response, next: NextFunction) => {
