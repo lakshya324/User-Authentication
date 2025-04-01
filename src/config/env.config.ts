@@ -29,3 +29,18 @@ export const redisConfig = {
   host: process.env.REDIS_HOST!,
   port: +process.env.REDIS_PORT!,
 };
+
+// Email Config
+export const transporter = {
+    service: process.env.EMAIL_SERVICE!,
+    auth: {
+      user: process.env.EMAIL!,
+      pass: process.env.PASSWORD!,
+    },
+  };
+export const emails = {
+    organization: process.env.ORGANIZATION_EMAIL!,
+    server_notify: process.env.SERVER_NOTIFY_EMAIL!.split(","),
+    // support: process.env.SUPPORT_EMAIL!,
+    // noReply: process.env.NO_REPLY_EMAIL!,
+  };
