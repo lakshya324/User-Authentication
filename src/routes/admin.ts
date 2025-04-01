@@ -5,18 +5,18 @@ import * as validationSchema from "../validation/admin.schema";
 const router = express.Router();
 
 //* Fetch All Users [GET /admin/users]
-router.get("/all", controller.getUsers);
+router.get("/users", controller.getUsers);
 
 //* Fetch User By ID [GET /admin/user/:id]
-router.get("/:id", controller.getUserById);
+router.get("/user/:id", controller.getUserById);
 
 //* Create User [POST /admin/user]
-router.post("/", validationSchema.user, controller.createUser);
+router.post("/user", validationSchema.createUser, controller.createUser);
 
 //* Update User [PUT /admin/user/:id]
-router.put("/:id", validationSchema.user, controller.updateUser);
+router.put("/user/:id", validationSchema.updateUser, controller.updateUser);
 
 //* Delete User [DELETE /admin/user/:id]
-router.delete("/:id", controller.deleteUser);
+router.delete("/user/:id", controller.deleteUser);
 
 export default router;

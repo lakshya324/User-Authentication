@@ -117,10 +117,9 @@ export async function updateUser(
       createError(`Validation Error! ${errors.array()[0].msg}`, 422);
 
     const { id } = req.params;
-    const { name, email, phone, password, role } = req.body;
+    const { name, phone, password, role } = req.body;
     const updatedUser = await UpdateExistingUser(id, {
       name,
-      email,
       phone,
       password,
       role,
