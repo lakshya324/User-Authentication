@@ -1,0 +1,32 @@
+{
+    "metadata": {
+      "author": "Lakshya Sharma",
+      "lastUpdated": "2024-04-01",
+      "version": "1.0",
+      "description": "This file contains metadata for user data including validation rules and text length limits."
+    },
+    "textLengthLimits": {
+      "name": {
+        "minLength": 5,
+        "maxLength": 100
+      },
+      "password": {
+        "minLength": 8,
+        "maxLength": 20
+      }
+    },
+    "validationPatterns": {
+      "email": {
+        "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+        "message": "Please enter a valid email address"
+      },
+      "profilePicture": {
+        "pattern": "^(http|https)://[^\\s/$.?#].[^\\s]*$",
+        "message": "Please enter a valid URL for profile picture"
+      },
+      "phone": {
+        "pattern": "^[0-9]{10}$",
+        "message": "Please enter a valid phone number"
+      }
+  }
+}
